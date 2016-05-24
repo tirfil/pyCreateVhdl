@@ -1,0 +1,9 @@
+entity REGISTER8
+clock CK
+reset CLRN
+in LOAD 
+in DIN 8
+out DOUT 8
+architecture struct
+end
+
