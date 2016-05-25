@@ -24,11 +24,11 @@ architecture struct of REGISTER8 is
 
 begin
 
-	TODO: process( CK, CLRN)
+	TODO: process(CK, CLRN)
 	begin
-		if ( CLRN = '0') then
+		if (CLRN = '0') then
 
-		elsif ( CK'event and CK = '1') then
+		elsif (CK'event and CK = '1') then
 
 	end process TODO;
 
