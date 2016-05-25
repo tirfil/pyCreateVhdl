@@ -1,5 +1,5 @@
 
-Create VHDL module and testbench skeleton (Python)
+## Create VHDL module and testbench skeleton (Python)
 
 VHDL langage syntax is strict and wordy. 
 We need to write again and again almost same code in entity, component and portmap. 
@@ -15,19 +15,22 @@ Each line is word separated by space. First word is the keyword , others are arg
 
 | syntax                                  | notes                   |
 | --------------------------------------  | ----------------------- |
-| entity module-name                      |                         |                     
-| architecture arch-name                  | default is rtl          |        
-| end                                     | end of file             |
-| in signal-name bus-width           | bus-witdh is optional |
-| out signal-name bus-width          | bus-witdh is optional |
-| inout signal-name bus-width         | bus-witdh is optional |
-| clock clock-name edge-value        | edge-value default 1 is positive edge |
-| reset async-reset-name active-value | active-value default 0 is active low |
+| **entity** module-name                      |                         |                     
+| **architecture** arch-name                  | default is rtl          |        
+| **end**                                     | end of file             |
+| **in** signal-name bus-width           | bus-witdh is optional |
+| **out** signal-name bus-width          | bus-witdh is optional |
+| **inout** signal-name bus-width         | bus-witdh is optional |
+| **clock** clock-name edge-value        | edge-value default 1 is positive edge |
+| **reset** async-reset-name active-value | active-value default 0 is active low |
 
 Using clock and reset is recommended for full features.
 
 For an example, see register8.txt in example/input. example/output contains generated files.
 
+```python
+python create_vhdl.py register8.txt
+```
 
 
 
