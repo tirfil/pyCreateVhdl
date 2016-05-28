@@ -86,6 +86,7 @@ class parser:
 		buffer.append("")		
 		buffer.append("library IEEE;")
 		buffer.append("use IEEE.std_logic_1164.all;")
+		buffer.append("use IEEE.numeric_std.all;")
 		buffer.append("")
 		return buffer
 		
