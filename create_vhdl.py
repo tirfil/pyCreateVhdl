@@ -39,15 +39,15 @@ class parser:
 	def read(self,filename):
 		with open(filename,'r') as f:
 			for line in f:
-				#print len(line)
+				#print(len(line))
 				if len(line) < 3:
 					continue
-				parameters = string.split(line)
+				parameters = line.split()
 				command = parameters[0]
 				command = command.lower()
 				if command == "entity":
 					self.entity = parameters[1]
-					#print "entity is %s" % self.entity
+					#print("entity is %s" % self.entity)
 					self.modules[self.entity] = []
 				if (command == "clock"):
 					self.clock = parameters[1]
@@ -109,7 +109,8 @@ class parser:
 		return buffer
 					
 	def write_entity(self,name):
-		if not self.modules.has_key(name):
+		#if not self.modules.has_key(name):
+		if name not in self.modules:
 			return ""
 		buffer=[]
 		iolist=self.modules[name]
@@ -122,7 +123,8 @@ class parser:
 		return buffer
 		
 	def component(self,name,tab=0):
-		if not self.modules.has_key(name):
+		#if not self.modules.has_key(name):
+		if name not in self.modules:
 			return ""
 		pre="\t"*tab
 		buffer=[]
@@ -136,7 +138,8 @@ class parser:
 		return buffer
 		
 	def portmap(self,name,digit,tab=0):
-		if not self.modules.has_key(name):
+		#if not self.modules.has_key(name):
+		if name not in self.modules:
 			return ""
 		buffer=[]
 		pre="\t"*tab
@@ -157,7 +160,8 @@ class parser:
 		return buffer
 		
 	def signals(self,name,tab=0):
-		if not self.modules.has_key(name):
+		#if not self.modules.has_key(name):
+		if name not in self.modules:
 			return ""
 		buffer=[]
 		pre="\t"*tab
@@ -185,6 +189,7 @@ class parser:
 		buffer.append("")
 		buffer.append("\t\telsif (%s'event and %s = '%d') then" % (self.clock,self.clock,self.clockedge))
 		buffer.append("")
+		buffer.append("\t\tend if;")
 		buffer.append("\tend process TODO;")
 		buffer.append("")		 
 		buffer.append("end %s;" % self.architecture)
@@ -243,7 +248,7 @@ class parser:
 	
 if __name__ == "__main__":
 	if len(sys.argv) != 2:
-		print "usage: %s %s" % (sys.argv[0],"file")
+		print("usage: %s %s" % (sys.argv[0],"file"))
 		exit(0)		
 	filename = sys.argv[1]
 	obj = parser(filename)
@@ -261,19 +266,19 @@ if __name__ == "__main__":
 """
 	buffer = obj.entity(name)
 	for line in buffer:
-		print line
+		print(line)
 	buffer = obj.component(name)
 	for line in buffer:
-		print line
+		print(line)
 	buffer = obj.portmap(name,0)
 	for line in buffer:
-		print line
+		print(line)
 	buffer = obj.signals(name)
 	for line in buffer:
 		print line	
 	buffer = obj.header()
 	for line in buffer:
-		print line		
+		print(line)
 """	
 
 		
